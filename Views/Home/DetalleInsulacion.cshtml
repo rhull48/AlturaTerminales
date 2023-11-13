@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AlturaTerminales.Models.DetalleAlturasInsulacion>;
+
+<div>
+
+    @if (Model.Any())
+    {
+        <table id=" MainTable" class="table table-hover header-fixed table-bordered">
+            <thead class="thread-black">
+                <tr>
+                    <td align="center">#</td>
+                    <td align="center">Insulacion</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td align="center">@item.Id</td>
+                        <td>@item.Insulacion</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No hay informacion de insulacion para esta combinacion...!</p>
+    }
+</div>

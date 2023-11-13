@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AlturaTerminales.Models.DetalleAlturasTerminal>;
+
+<div>
+    <div class="row">
+        <div class="col-3">
+            <img src=@string.Concat("/Terminales/1-928-498-006.jpg") width="160" height="120" onerror="this.onerror=null; this.src='Image/NoImage.jpg'" />
+            @* <img src=@string.Concat("/Terminales/",Model.First().Terminal,".jpg") width="160" height="120" onerror="this.onerror=null; this.src='Image/ICALogo.png'" /> *@
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <h4>@Model.Select(s => s.Terminal).First()</h4>
+            </div>
+            <div class="row">
+                <p>@Model.Select(s => s.Descripcion).First()</p>
+            </div>
+            <div class="row row-cols-sm-auto">
+                <a class="btn link-primary" onclick="AbrirEspecificacion('@Model.First().Terminal','@Url.ActionLink("AbrirEspecificacionTerminal","Home")')">Ver Especificacion</a>
+            </div>
+        </div>
+    </div>
+
+    <table id=" MainTable" class="table table-hover header-fixed table-bordered  ">
+        <thead class="thread-black">
+            <tr>
+                <td width="20"></td>
+                <td width="20"></td>
+                <td width="120" align="center">Combinacion GA's</td>
+                <td width="80" align="center">Sello</td>
+                <td width="120" align="center">Altura</td>
+                <td width="120" align="center">Ancho</td>
+                <td width="80" align="center">Pull (lbs)</td>
+                <td>Nota</td>
+            </tr>
+        </thead>
+        <tbody id="TableBody">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center"><a class="btn btn-sm btn-outline-primary tooltip-arrow" title="Insulaciones" onclick="VerDetalleInsulaciones(@item.Id, '@Url.ActionLink("DetalleInsulacion","Home")')"><i class="bi bi-list-check"></i></a></td>
+                    <td class="text-center"><a class="btn btn-sm btn-outline-primary tooltip-arrow" title="Aplicadores" onclick="VerDetalleAplicadores(@item.Id, '@Url.ActionLink("DetalleAplicadores","Home")')"><i class="bi bi-gear"></i>
+
+                </a>
+
+                </td>
+                    <td align="left">@item.CombinacionGA</td>
+                    <td align="left">@item.Sello</td>
+                    <td align="center">@item.Altura</td>
+                    <td align="center">@item.Ancho</td>
+                    <td align="center">@item.Pull</td>
+                    <td align="left">@item.Nota</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+ 

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AlturaTerminales.Models.AlturasList>;
+ 
+ 
+<div class="text-center">
+    @if (Model.Any())
+    {
+        <table id="MainTable" class="table table table-hover header-fixed table-bordered table-striped">
+            <thead class="bg-light text-md-center">
+                <tr>
+                    <th></th>
+                    <th width="60">#</th>
+                    <th width="150">Terminal</th>
+                    <th>Descripcion</th>
+                    <th width="90">Categoria</th>
+                    <th width="80">Area</th>
+                    <th width="120">StudSize</th>
+                    <th width="80">Min OD</th>
+                    <th width="80">Max OD</th>
+                    <th width="80">Min GA</th>
+                    <th width="80">Max GA</th>
+                    <th width="80">Ajuste</th>
+                    <th width="80">Dimension</th>
+                </tr>
+            </thead>
+            <tbody id="TableBody">
+                @foreach (var item in Model)
+                {
+                    <tr >
+                        <td class="text-center"><a class="btn btn-sm btn-outline-success" onclick="VerDetalleAlturas(@item.idTerminal,'@Url.ActionLink("DetalleTerminal","Home")')"><i class="bi bi-list"></i></a></td>
+                        <td align="center">@item.Id</td>
+                        <td align="left">@item.Terminal</td>
+                        <td align="left">@item.Descripcion</td>
+                        <td>@item.Categoria</td>
+                        <td align="center">@item.Area</td>
+                        <td align="center">@item.StudSize</td>
+                        <td align="right">@item.MinOD</td>
+                        <td align="right">@item.MaxOD</td>
+                        <td align="right">@item.MinGA</td>
+                        <td align="right">@item.MaxGA</td>
+                        <td align="right">@item.Ajuste</td>
+                        <td align="right">@item.Dimension</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+ 
+<!-- Modal para mostrar las alturas-->
+<div id="DetalleModal" class="modal fade bd-example-modal-lg" data-mdb-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DetalleModalLabel">Mensaje</h5>
+            </div>
+            <div id="modalBody" class="modal-body">
+                <p>Lo sentimos, no se hayo informacion..</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="CierraModal('DetalleModal')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Detalle -->
+<div class="modal fade" id="ModalInfo" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalInfoTitle">Mensaje</h5>
+            </div>
+            <div id="modalBodyInfo" class="modal-body">
+                <p>Lo sentimos, no se hayo informacion..</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="CierraModal('ModalInfo')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+ 

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AlturaTerminales.Models.DetalleAplicadores>;
+
+<div>
+
+    @if (Model.Any())
+    {
+        <table id=" MainTable" class="table table-hover header-fixed table-bordered">
+            <thead class="thread-black">
+                <tr>
+                    <td align="center">#</td>
+                    <td align="center">Aplicador</td>
+                    <td align="center">Tooling Adicional</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td align="center">@item.Id</td>
+                        <td>@item.Aplicador</td>
+                        <td>@item.Tooling</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No hay informacion de aplicadores para esta combinacion...!</p>
+    }
+</div>
